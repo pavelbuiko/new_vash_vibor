@@ -1,0 +1,61 @@
+2016-06-14 17:51:31 [127.0.0.1][-][-][error][ReflectionException] exception 'ReflectionException' with message 'Class app\modules\backend\Module does not exist' in C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\di\Container.php:415
+Stack trace:
+#0 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\di\Container.php(415): ReflectionClass->__construct('app\\modules\\bac...')
+#1 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\di\Container.php(358): yii\di\Container->getDependencies('app\\modules\\bac...')
+#2 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\di\Container.php(151): yii\di\Container->build('app\\modules\\bac...', Array, Array)
+#3 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('app\\modules\\bac...', Array, Array)
+#4 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\base\Module.php(354): yii\BaseYii::createObject(Array, Array)
+#5 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\base\Module.php(511): yii\base\Module->getModule('managecontent')
+#6 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\base\Module.php(449): yii\base\Module->createController('managecontent/c...')
+#7 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('managecontent/c...', Array)
+#8 C:\OpenServer\domains\airbanner\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\OpenServer\domains\airbanner\web\index.php(17): yii\base\Application->run()
+#10 {main}
+2016-06-14 17:51:31 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'dd4139094a17c0ec1b5b4532776bcf9832d82fd70cb0564c5e15194e3cfbf291a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lHpyOqFtvX_v8tAm8uKiizXiU8scCOh-\";}'
+    'PHPSESSID' => '5ms1t9d3fcudrdhk9djvcm4291'
+    '_identity' => '6ee41dab263b5140504b9da3f236e60c1157ff0f8bd34f12af9dac57074c7d17a:2:{i:0;s:9:\"_identity\";i:1;s:47:\"[10,\"2mbWJDtSEoaSZqOkj0Ocul8QXYYX3uWB\",2592000]\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'airbanner'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.130 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en-US;q=0.8,en;q=0.6'
+    'HTTP_COOKIE' => '_csrf=dd4139094a17c0ec1b5b4532776bcf9832d82fd70cb0564c5e15194e3cfbf291a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lHpyOqFtvX_v8tAm8uKiizXiU8scCOh-%22%3B%7D; PHPSESSID=5ms1t9d3fcudrdhk9djvcm4291; _identity=6ee41dab263b5140504b9da3f236e60c1157ff0f8bd34f12af9dac57074c7d17a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A47%3A%22%5B10%2C%222mbWJDtSEoaSZqOkj0Ocul8QXYYX3uWB%22%2C2592000%5D%22%3B%7D'
+    'PATH' => 'c:\\openserver\\modules\\php\\PHP-5.5\\ext;c:\\openserver\\modules\\php\\PHP-5.5\\pear;c:\\openserver\\modules\\php\\PHP-5.5\\pear\\bin;c:\\openserver\\modules\\php\\PHP-5.5;c:\\openserver\\modules\\imagemagick;c:\\openserver\\modules\\wget\\bin;c:\\openserver\\modules\\git;c:\\openserver\\modules\\git\\bin;c:\\openserver\\modules\\git\\mingw\\bin;c:\\openserver\\modules\\git\\cmd;c:\\openserver\\modules\\database\\MySQL-5.5\\bin;c:\\openserver\\modules\\http\\Apache-2.4\\bin;c:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.16 (Win32)'
+    'SERVER_NAME' => 'airbanner'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/OpenServer/domains/airbanner'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/OpenServer/domains/airbanner'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'C:/OpenServer/domains/airbanner/web/index.php'
+    'REMOTE_PORT' => '2201'
+    'REDIRECT_URL' => '/web/managecontent/contacts'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/managecontent/contacts'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1465915891.545
+    'REQUEST_TIME' => 1465915891
+    'argv' => []
+    'argc' => 0
+]

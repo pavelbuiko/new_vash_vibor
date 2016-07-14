@@ -25,6 +25,10 @@ $(function() {
     showMemberPhone();
 
     mobileMenuOpen();
+
+
+
+
 });
 
 function showCircles($circleBlock) {

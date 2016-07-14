@@ -1,52 +1,47 @@
-
 'use strict'
 
 $(function() {
 
+
+    showInputsBlocks();
     areaBlockHover();
     downHelpHide();
     mapInitialization();
     slidersInitialization();
     bindRange();
-    contactPhoneWrapp();
 
     setTimeout(plusDescriptionWidth, 100);
     showDescription();
 
     bindNavigationSwitch();
 
-
+    animateBlocksShow();
     $(window).scroll(function() {
-        $('.plus-container').each(function() {
-            if (isScrolledIntoView($(this), -150)) {
-                $(this).css('transform', 'scale(1)')
-            }
-        })
-        $('.about-agency-container').each(function() {
-            if (isScrolledIntoView($(this), -150)) {
-                $(this).css('transform', 'scale(1)')
-            }
-        })
-
-        showSidesBlock($('.cost-addiction-slide'));
-        showSidesBlock($('.mortgage-information-slide'));
-
+        animateBlocksShow();
     })
 
-    showInputsBlocks();
     navigationMenuShow();
+
+    showMemberPhone();
+
+    mobileMenuOpen();
 });
-function contactPhoneWrapp(){
 
-    var phones = $('.contacts-data-single-block').eq(2).find('p');
-
-    phones.each(function(){
-        var phone_number = $(this).text();
-        var separate_phone = phone_number.split(' ');
-        $(this).html(separate_phone[0]+' '+separate_phone[1]+' '+"<span>" +separate_phone[2]+"</span");
+function showCircles($circleBlock) {
+    $($circleBlock).each(function() {
+        if (isScrolledIntoView($(this), -150)) {
+            $(this).css('transform', 'scale(1)')
+        }
     })
-
 }
+
+function animateBlocksShow() {
+    showCircles($('.plus-container'));
+    showCircles($('.about-agency-container'));
+    showSidesBlock($('.cost-addiction-slide'));
+    showSidesBlock($('.mortgage-information-slide'));
+}
+
 function bindNavigationSwitch() {
     var OFFSET_PERCENT = 20,
         $navigationCircle = $('.navigation-link'),
@@ -117,87 +112,16 @@ function downHelpHide() {
     }
 }
 
-/*
- function mapInitialization() {
- ymaps.ready(function() {
- var myMap = new ymaps.Map('map', {
- center: [55.785574, 39.573856],
- zoom: 9
- }, {
- searchControlProvider: 'yandex#search'
- })
- ymaps.geocode('Россия, Ростовская обл., г. Ростов-на-Дону, пр. Пушкина, 89', {
- /!**
- * Опции запроса
- * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/geocode.xml
- *!/
- // Сортировка результатов от центра окна карты.
- // boundedBy: myMap.getBounds(),
- // strictBounds: true,
- // Вместе с опцией boundedBy будет искать строго внутри области, указанной в boundedBy.
- // Если нужен только один результат, экономим трафик пользователей.
- results: 1
- }).then(function (res) {
- // Выбираем первый результат геокодирования.
- var firstGeoObject = res.geoObjects.get(0),
- // Координаты геообъекта.
- coords = firstGeoObject.geometry.getCoordinates(),
- // Область видимости геообъекта.
- bounds = firstGeoObject.properties.get('boundedBy');
-
- // Добавляем первый найденный геообъект на карту.
- myMap.geoObjects.add(firstGeoObject);
- // Масштабируем карту на область видимости геообъекта.
- myMap.setBounds(bounds, {
- // Проверяем наличие тайлов на данном масштабе.
- checkZoomRange: true
- });
-
- /!**
- * Все данные в виде javascript-объекта.
- *!/
- console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
- /!**
- * Метаданные запроса и ответа геокодера.
- * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderResponseMetaData.xml
- *!/
- console.log('Метаданные ответа геокодера: ', res.metaData);
- /!**
- * Метаданные геокодера, возвращаемые для найденного объекта.
- * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderMetaData.xml
- *!/
- console.log('Метаданные геокодера: ', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData'));
- /!**
- * Точность ответа (precision) возвращается только для домов.
- * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/precision.xml
- *!/
- console.log('precision', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.precision'));
- /!**
- * Тип найденного объекта (kind).
- * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/kind.xml
- *!/
- console.log('Тип геообъекта: %s', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.kind'));
- console.log('Название объекта: %s', firstGeoObject.properties.get('name'));
- console.log('Описание объекта: %s', firstGeoObject.properties.get('description'));
- console.log('Полное описание объекта: %s', firstGeoObject.properties.get('text'));
-
- /!**
- * Если нужно добавить по найденным геокодером координатам метку со своими стилями и контентом балуна, создаем новую метку по координатам найденной и добавляем ее на карту вместо найденной.
- *!/
- /!**
- var myPlacemark = new ymaps.Placemark(coords, {
- iconContent: 'моя метка',
- balloonContent: 'Содержимое балуна <strong>моей метки</strong>'
- }, {
- preset: 'islands#violetStretchyIcon'
- });
-
- myMap.geoObjects.add(myPlacemark);
- *!/
- });
- });
- }
- */
+function mapInitialization() {
+    ymaps.ready(function() {
+        var myMap = new ymaps.Map('map', {
+            center: [55.751574, 37.573856],
+            zoom: 9
+        }, {
+            searchControlProvider: 'yandex#search'
+        })
+    });
+}
 
 function slidersInitialization() {
     $('.mortgage-information-slider').slick({
@@ -250,20 +174,13 @@ function bindRange() {
         var minValue = $(this).attr('data-min');
         var maxValue = $(this).attr('data-max');
 
-
-
-
-
         $(this).find('.noUi-handle').append('<div class="current-value"><span>' + name + '</span></div>')
-        var summa = name;
         $(this).find('.noUi-base').append('<div class="min-value">' + minValue + '</div>')
         $(this).find('.noUi-base').append('<div class="max-value">' + maxValue + '</div>')
 
         this.noUiSlider.on('update', function(arr, handle, value) {
             $(this.target).attr('data-current', value[0]);
             $(this.target).find('.noUi-handle-lower').attr('data-value', value[0]);
-
-
             if (name.length == 1) {
                 $(this.target).find('.current-value span').html(name + ' ' + Math.round(value[0]));
             } else {
@@ -276,17 +193,7 @@ function bindRange() {
                     name = 'лет';
                 }
                 $(this.target).find('.current-value span').html(Math.round(value) + ' ' + name);
-
             }
-            var summary = $('.summary').find('span').text();
-            summary = summary.substr(2);
-            var period =  parseInt($('.period').find('span').text());
-            var procent = parseFloat($(".number").text());
-            procent= procent/(100*12);
-
-            var calculateProcent = ((summary*procent)/(1-Math.pow(1+procent, (1-(period*12))))).toFixed(0);
-            $('.month-payment .number').text(calculateProcent);
-
         });
 
 
@@ -307,9 +214,6 @@ function showDescription() {
         $(this).parent('.plus-container').addClass('opened-description');
     })
 }
-
-
-
 
 function showSidesBlock(slideBlock) {
     if (isScrolledIntoView((slideBlock), 50)) {
@@ -332,9 +236,32 @@ function navigationMenuShow() {
     $('.navigation-menu').hover(function() {
         $('.navigation-link span').show();
         $('.navigation-background').css('transform', 'translateX(0)');
-        console.log(1);
     }, function() {
         $('.navigation-link span').hide();
         $('.navigation-background').css('transform', 'translateX(-100%)');
+    })
+}
+
+function showMemberPhone() {
+    $('.show-phone-button').click(function(event) {
+        event.preventDefault();
+        $(this).css({
+            'opacity': '0',
+            'pointer-events': 'none'
+        });
+        $(this).prev().find('.hidden-phone').css({
+            'opacity': '1',
+            'z-index': '2'
+        });
+        $(this).prev().find('.phone-mask').css({
+            'opacity': '0',
+            'z-index': '1'
+        });
+    })
+}
+
+function mobileMenuOpen() {
+    $('.mobile-menu-button').click(function() {
+        $('.header-menu').css('display', 'block');
     })
 }
